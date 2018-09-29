@@ -76,11 +76,11 @@ def handle_data():
         return render_template('fillForm.html',error=error)
 
     elif 'checkBurst' in _keys and 'checkUserDefinedPackets' in _keys:
-	error('The user cannot check burst and user defined frame at once')
+	error = 'The user cannot check burst and user defined frame at once'
         return render_template('fillForm.html',error=error)
 
     elif 'checkUserDefinedPackets' in _keys and 'checkNormalTime' in _keys:
-	error('The user cannot check user defined frame and check normal time at once')
+	error= 'The user cannot check user defined frame and check normal time at once'
         return render_template('fillForm.html',error=error)
 
     if 'checkBurst' in _keys:
@@ -108,7 +108,7 @@ def handle_data():
 	no_of_frameB = int(1000000/ float(one_packet_length * 8)* load * (burstInterval / float(1000000000)))
 
     if no_of_frameB<1:
-	error('Frames cannot compensate in the user defined burst parameters ')
+	error = 'Frames cannot compensate in the user defined burst parameters '
         return render_template('fillForm.html',error=error)
 
 
@@ -142,7 +142,7 @@ def handle_data():
 	no_of_frameN = int(1000000/ float(one_packet_length * 8)* load * (normalTime / float(1000000000)))
 
     if no_of_frameN<1:
-	error('Frames cannot compensate in the user defined burst parameters ')
+	error = 'Frames cannot compensate in the user defined time parameters '
         return render_template('fillForm.html',error=error)
 
     if 'checkUserDefinedPackets' in _keys:
