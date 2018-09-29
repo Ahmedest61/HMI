@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if error %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  {% endif %}
+<body>
+<form action="/handle_data" method="post">
+
+    <div>
+        <label for="load"> Load:</label>
+        <input type="number" min="1" max ="100" value="100" step= "any" id="name" name="load">
+    </div>
+
+    <div>
+        <label for="ethertype"> Ethertype:</label>
+        <select id ="name" name="ethertype" >
+            <option value="8892">8892</option>
+            <option value="0800">0800</option>
+            <option value="8100">8100</option>
+        </select>
+    </div>
+
+
+    <div>
+	<p class="label_checkbox_pair">
+        
+        <input type="checkbox"  id="name" name="vlancheck">
+	<label for="vlan"> VLAN check</label> </p>
+    </div>
+
+
+    <div>
+        <label for="vlanid"> vLAN Id:</label>
+        <input type="number" id="name" min="1" max ="4095" value="1" name="vlanid">
+    </div>
+
+    <div>
+        <label for="vlanpriority"> vLAN Priority:</label>
+        <input type="number" id="name" value="1" min="1" max ="7"name="vlanpriority">
+    </div>
+
+    <div>
+        <label for="vlancfi"> vLAN cfi:</label>
+        <input type="number" id = "name" value="1" min="0" max ="1" name="vlancfi">
+    </div>
+
+
+    <div>
+        <label for="payloadsize"> Payload size:</label>
+        <select id ="name" name="payloadsize" >
+            <option value="60">60</option>
+            <option value="124">124</option>
+            <option value="252">252</option>
+            <option value="508">508</option>
+            <option value="1020">1020</option>
+            <option value="1514">1514</option>
+        </select>
+    </div>
+
+    <div>
+	<p class="label_checkbox_pair">
+        
+        <input type="checkbox"  id="name" name="checkBurst">
+        <label for="checkBurst"> Burst check</label></p>
+        
+    </div>
+
+    <div>
+        <label for="numberofburst">Number of Bursts:</label>
+        <input type="number" id="name" min="1" value="1" name="noofburst">
+    </div>
+
+    <div>
+        <label for="burstinterval">Burst Time Interval:</label>
+        <input type="number" id="name" min="0" value="1" step="any" name="burstintervaltime">
+        <select id ="name" name="burstintervaltimeunit" >
+            <option value="S">s</option>
+            <option value="ms">ms</option>
+            <option value="us">us</option>
+            <option value="ns">ns</option>
+            <option value="M">M</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="burstsleepinterval">Burst sleep Interval:</label>
+        <input type="number" id="name" min="0" value="1" step="any" name="burstsleepintervaltime">
+        <select id ="name" name="burstsleepintervaltimeunit" >
+            <option value="S">s</option>
+            <option value="ms">ms</option>
+            <option value="us">us</option>
+            <option value="ns">ns</option>
+            <option value="M">M</option>
+        </select>
+    </div>
+
+    <div>
+
+
+	<p class="label_checkbox_pair">
+        
+        <input type="checkbox" id="name" min="1" value="1" step="any" name="checkNormalTime">
+<label for="checkNormalTime"> Time check</label></p>
+    </div>
+
+    <div>
+        <label for="normaltimeinterval"> Time interval:</label>
+        <input type="number" id="name" min="1" value="1" step="any" name="normaltimeinterval">
+        <select id ="name" name="normaltimeintervalunit" >
+            <option value="S">s</option>
+            <option value="ms">ms</option>
+            <option value="us">us</option>
+            <option value="ns">ns</option>
+            <option value="M">M</option>
+        </select>
+    </div>
+
+    <div>
+<p class="label_checkbox_pair">
+        
+        <input type="checkbox"  id="name" name="checkUserDefinedPackets">
+<label for="checkUserDefinedPackets"> Frame check</label></p>
+
+        <div>
+            <label for="noofframe">Number of frames:</label>
+            <input type="number" id="name" value="10" min="1" name="numberofframes">
+        </div>
+
+
+        <div class="buton">
+            <button type="submit">Submit</button>
+            </div
+
+</form>
+<style>
+
+p.label_checkbox_pair {
+clear: both;
+float: none;
+position: relative;
+}
+p.label_checkbox_pair input {
+left: 80px;
+position: relative;
+top: 1px;
+
+}
+p.label_checkbox_pair label {
+display: block;
+margin-left: 90px;
+width: 200px;
+}
+.error {
+    color: red
+}
+    form {
+        /* Just to center the form on the page */
+        margin: 0 auto;
+        width: 500px;
+        /* To see the outline of the form */
+        padding: 1em;
+        border: 1px solid #CCC;
+        border-radius: 1em;
+    }
+
+    form div + div {
+        margin-top: 1em;
+    }
+
+
+  /*  select { width: 50px; text-align-last:center; }*/
+
+    label {
+        /* To make sure that all labels have the same size and are properly aligned */
+        display: inline-block;
+        width: 90px;
+        text-align: right;
+    }
+
+    input, textarea {
+        /* To make sure that all text fields have the same font settings
+           By default, textareas have a monospace font */
+        font: 1em sans-serif;
+
+        /* To give the same size to all text fields */
+        width: 300px;
+        box-sizing: border-box;
+
+        /* To harmonize the look & feel of text field border */
+        border: 1px solid #999;
+    }
+
+    input:focus, textarea:focus {
+        /* To give a little highlight on active elements */
+        border-color: #000;
+    }
+
+    textarea {
+        /* To properly align multiline text fields with their labels */
+        vertical-align: top;
+
+        /* To give enough room to type some text */
+        height: 5em;
+    }
+
+    .buton {
+        /* To position the buttons to the same position of the text fields */
+/*        padding-left: 50px; /* same size as the label elements */
+	text-align:center;    
+ }
+
+    buton {
+        /* This extra margin represent roughly the same space as the space
+           between the labels and their text fields */
+	margin-left: 1em;
+    }
+
+</style>
+<body>
+{% endblock %}
