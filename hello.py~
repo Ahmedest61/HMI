@@ -5,7 +5,7 @@ import json
 import subprocess
 import os,time
 
-app = Flask(__name__)
+app = Flask(__name__,static_url_path='/static')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route('/login/fillForm')
@@ -68,20 +68,20 @@ def handle_data():
     
 
     if not 'checkBurst' in _keys and not 'checkNormalTime' in _keys and not 'checkUserDefinedPackets' in _keys:
-	flash(u'The user needs to check atleast one option','info')
-        return render_template('fillForm.html')
+	error = 'The user needs to check atleast one option'	
+        return render_template('fillForm.html',error=error)
 
     elif 'checkBurst' in _keys and 'checkNormalTime' in _keys:
-	flash('The user cannot check burst and check normal time at once','error')
-        return render_template('fillForm.html')
+	error = 'The user cannot check burst and check normal time at once'	
+        return render_template('fillForm.html',error=error)
 
     elif 'checkBurst' in _keys and 'checkUserDefinedPackets' in _keys:
-	flash('The user cannot check burst and user defined frame at once','error')
-        return render_template('fillForm.html')
+	error('The user cannot check burst and user defined frame at once')
+        return render_template('fillForm.html',error=error)
 
     elif 'checkUserDefinedPackets' in _keys and 'checkNormalTime' in _keys:
-	flash('The user cannot check user defined frame and check normal time at once','error')
-        return render_template('fillForm.html')
+	error('The user cannot check user defined frame and check normal time at once')
+        return render_template('fillForm.html',error=error)
 
     if 'checkBurst' in _keys:
         data['checkBurst'] = 1
@@ -108,8 +108,9 @@ def handle_data():
 	no_of_frameB = int(1000000/ float(one_packet_length * 8)* load * (burstInterval / float(1000000000)))
 
     if no_of_frameB<1:
-	flash('Frames cannot compensate in the user defined burst parameters ','error')
-        return render_template('fillForm.html')
+	error('Frames cannot compensate in the user defined burst parameters ')
+        return render_template('fillForm.html',error=error)
+
 
     data['burstTimeEqualSleepTime'] = 0
     data['burstSleeptime'] = request.form['burstsleepintervaltime']

@@ -1,26 +1,46 @@
 {% extends "layout.html" %}
 {% block body %}
 <body>
+<div class="text-block">
   <h1>FPGA based Load Generator for Profinet/Ethernet using Netjury</h1>
   {% if error %}
     <p class=error><strong>Error:</strong> {{ error }}
   {% endif %}
+</div>
+<div class="container">
+  <img src="{{url_for('static', filename='incase.jpg')}}" align="middle">
+  <div class="text-block">
   <form method=post>
-<img src="{{url_for('static', filename='incase.jpg')}}" /> 
+ 
    <dl>
-<div>
       <dt>Username:
       <dd><input type=text name=username value="{{
-          request.form.username }}">  </div>
-<div>
+          request.form.username }}"> 
       <dt>Password:
-      <dd><input type=password name=password> </div>
+      <dd><input type=password name=password> 
     </dl>
     <div class="buton">
             <button type="submit">Login</button>
             </div
   </form>
+  </div>
+</div>
 <style>
+
+.container {
+    position: center;
+}
+
+/* Bottom right text */
+.text-block {
+    position: center;
+    bottom: 20px;
+    right: 20px;
+    background-color: Gainsboro ;
+    color: black;
+    padding-left: 30px;
+    padding-right: 30px;
+}
 
 p.label_checkbox_pair {
 clear: both;
@@ -41,7 +61,7 @@ width: 200px;
 .error {
     color: red
 }
-    form + img {
+    form {
         /* Just to center the form on the page */
         margin: 0 auto;
         width: 500px;
@@ -50,6 +70,7 @@ width: 200px;
         border: 1px solid #CCC;
         border-radius: 1em;
     }
+
     form div + div {
         margin-top: 1em;
     }

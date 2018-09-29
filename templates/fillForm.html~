@@ -13,7 +13,7 @@
   {% endif %}
 <body>
 <form action="/handle_data" method="post">
-<img src="{{url_for('static', filename='incase1inAll.jpg')}}" />
+
     <div>
         <label for="load"> Load:</label>
         <input type="number" min="1" max ="100" value="100" step= "any" id="name" name="load">
@@ -165,17 +165,6 @@ width: 200px;
         /* Just to center the form on the page */
         margin: 0 auto;
         width: 500px;
-        /* To see the outline of the form */
-        padding: 1em;
-        border: 1px solid #CCC;
-        border-radius: 1em;
-    }
-	
-    img {
-        /* Just to center the form on the page */
-        margin: 0 auto;
-        width: 500px;
-	opacity:0.8;
         /* To see the outline of the form */
         padding: 1em;
         border: 1px solid #CCC;
