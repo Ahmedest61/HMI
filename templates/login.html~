@@ -41,23 +41,12 @@ width: 200px;
 .error {
     color: red
 }
-    form {
+    form + img {
         /* Just to center the form on the page */
         margin: 0 auto;
         width: 500px;
         /* To see the outline of the form */
         padding: 1em;
-        border: 1px solid #CCC;
-        border-radius: 1em;
-    }
-
-    img {
-        /* Just to center the form on the page */
-        margin: 0 auto;
-        width: 500px;
-        /* To see the outline of the form */
-	opacity:0.2;        
-	padding: 1em;
         border: 1px solid #CCC;
         border-radius: 1em;
     }
