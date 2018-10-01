@@ -72,7 +72,7 @@ def handle_data():
         return render_template('fillForm.html',error=error)
 
     elif 'checkBurst' in _keys and 'checkNormalTime' in _keys:
-	error = 'The user cannot check burst and check normal time at once'	
+	error = 'The user cannot check burst and normal time at once'	
         return render_template('fillForm.html',error=error)
 
     elif 'checkBurst' in _keys and 'checkUserDefinedPackets' in _keys:
@@ -80,7 +80,7 @@ def handle_data():
         return render_template('fillForm.html',error=error)
 
     elif 'checkUserDefinedPackets' in _keys and 'checkNormalTime' in _keys:
-	error= 'The user cannot check user defined frame and check normal time at once'
+	error= 'The user cannot check user defined frame and normal time at once'
         return render_template('fillForm.html',error=error)
 
     if 'checkBurst' in _keys:
@@ -182,14 +182,14 @@ def handle_data():
 		    flash(str(load)+'% Load generated sucessfully for '+str(noOfBurst)+' bursts '+ '('+str(no_of_frameB)+' frames per burst, total frames: '+str(int(no_of_frameB)*int(noOfBurst))+') with burstTime '+str(burstInterval)+str(burstIntervalUnit)+' and sleepInterval '+str(burstSleepInterval)+str(burstSleepIntervalUnit) +' with ' + str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype with Vlanid '+str(vlanId)+' VlanPriority '+str(vlanPrio)+' and VlanCFI '+str(vlanCfi) )
 	    elif checkTime:
                 if not checkVlan:
-	            flash(str(load)+'% Load generated sucessfully for '+str(normalTime)+str(normalTimeUnit)+' with '+str(no_of_frameN) +' frames with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype')
+	            flash(str(load)+'% Load generated sucessfully for time '+str(normalTime)+str(normalTimeUnit)+' with '+str(no_of_frameN) +' frames with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype')
 		else:
-                    flash(str(load)+'% Load generated sucessfully for '+str(normalTime)+str(normalTimeUnit)+' with '+str(no_of_frameN) +' frames with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype with Vlanid '+str(vlanId)+' VlanPriority '+str(vlanPrio)+' and VlanCFI '+str(vlanCfi) )
+                    flash(str(load)+'% Load generated sucessfully for time '+str(normalTime)+str(normalTimeUnit)+' with '+str(no_of_frameN) +' frames with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype with Vlanid '+str(vlanId)+' VlanPriority '+str(vlanPrio)+' and VlanCFI '+str(vlanCfi) )
 	    elif checkFrames:
 	        if not checkVlan:
-		    flash(str(load)+'% Load generated sucessfully for '+ str(no_of_frameP)+' frames in '+str(timeP)+'S'+' with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype')
+		    flash(str(load)+'% Load generated sucessfully for '+ str(no_of_frameP)+' frames in '+str(timeP)+'S time with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype')
 		else:
-		    flash(str(load)+'% Load generated sucessfully for '+ str(no_of_frameP)+' frames in '+str(timeP)+'S'+' with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype with Vlanid '+str(vlanId)+' VlanPriority '+str(vlanPrio)+' and VlanCFI '+str(vlanCfi) )
+		    flash(str(load)+'% Load generated sucessfully for '+ str(no_of_frameP)+' frames in '+str(timeP)+'S time with '+ str(one_packet_length)+' frame size and 0x'+ethtype+' Ethertype with Vlanid '+str(vlanId)+' VlanPriority '+str(vlanPrio)+' and VlanCFI '+str(vlanCfi) )
 	 #   os.remove(load_generatedFile) 
 	    break
 	else:
@@ -200,7 +200,7 @@ def handle_data():
     return render_template('fillForm.html')
 
 if __name__ == "__main__":
-    app.run(host="192.168.1.89",port=5000)
+    app.run(host="155.245.44.23",port=5000)
   #  app.run(host="10.245.108.228",port=5000)
 
    
