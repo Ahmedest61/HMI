@@ -16,9 +16,34 @@
 <body>
 <form action="/handle_data" method="post">
 
+  
+    <div>
+	<p class="label_checkbox_pair">
+        <input type="checkbox"  id="name" name="setScriptingMode">
+	<label for="setScriptingMode"> Scripting Mode </label> </p>
+    </div>
+
+    <div>
+        <label for="loadPort"> loadPort:</label>
+        <select id ="name" name="loadPort" >
+            <option value="0">A</option>
+            <option value="1">B</option>
+        </select>
+    </div>
+
     <div>
         <label for="load"> Load:</label>
         <input type="number" min="1" max ="100" value="100" step= "any" id="name" name="load">
+    </div>
+
+    <div>
+        <label for="srcMac"> Source MAC:</label>
+        <input type="text" value="12:2A:3B:4D:EE:DA" step= "any" id="name" name="srcMac">
+    </div>
+
+    <div>
+        <label for="dstMac"> Destination MAC:</label>
+        <input type="text" value="12:2A:3B:4D:EE:DA" step= "any" id="name" name="dstMac">
     </div>
 
     <div>
@@ -34,30 +59,30 @@
     <div>
 	<p class="label_checkbox_pair">
         
-        <input type="checkbox"  id="name" name="vlancheck">
-	<label for="vlan"> VLAN check</label> </p>
+        <input type="checkbox"  id="name" name="checkVlanTag">
+	<label for="checkVlanTag"> VLAN check</label> </p>
     </div>
 
 
     <div>
         <label for="vlanid"> vLAN Id:</label>
-        <input type="number" id="name" min="1" max ="4095" value="1" name="vlanid">
+        <input type="number" id="name" min="0" max ="4095" value="0" name="vlanid">
     </div>
 
     <div>
         <label for="vlanpriority"> vLAN Priority:</label>
-        <input type="number" id="name" value="1" min="1" max ="7"name="vlanpriority">
+        <input type="number" id="name" value="0" min="0" max ="7"name="vlanpriority">
     </div>
 
     <div>
         <label for="vlancfi"> vLAN cfi:</label>
-        <input type="number" id = "name" value="1" min="0" max ="1" name="vlancfi">
+        <input type="number" id = "name" value="0" min="0" max ="1" name="vlancfi">
     </div>
 
 
     <div>
-        <label for="payloadsize"> Payload size:</label>
-        <select id ="name" name="payloadsize" >
+        <label for="payloadSize"> Payload size:</label>
+        <select id ="name" name="payloadSize" >
             <option value="60">60</option>
             <option value="124">124</option>
             <option value="252">252</option>
@@ -76,14 +101,14 @@
     </div>
 
     <div>
-        <label for="numberofburst">Number of Bursts:</label>
-        <input type="number" id="name" min="1" value="1" name="noofburst">
+        <label for="noOfBurst">Number of Bursts:</label>
+        <input type="number" id="name" min="1" value="1" name="noOfBurst">
     </div>
 
     <div>
-        <label for="burstinterval">Burst Time Interval:</label>
-        <input type="number" id="name" min="0" value="1" step="any" name="burstintervaltime">
-        <select id ="name" name="burstintervaltimeunit" >
+        <label for="burstTime">Burst Time Interval:</label>
+        <input type="number" id="name" min="0" value="1" step="any" name="burstTime">
+        <select id ="name" name="burstTimeUnit" >
             <option value="S">s</option>
             <option value="ms">ms</option>
             <option value="us">us</option>
@@ -93,14 +118,22 @@
     </div>
 
     <div>
-        <label for="burstsleepinterval">Burst sleep Interval:</label>
-        <input type="number" id="name" min="0" value="1" step="any" name="burstsleepintervaltime">
-        <select id ="name" name="burstsleepintervaltimeunit" >
+        <label for="burstSleeptime">Burst sleep Interval:</label>
+        <input type="number" id="name" min="0" value="1" step="any" name="burstSleeptime">
+        <select id ="name" name="burstSleeptimeUnit" >
             <option value="S">s</option>
             <option value="ms">ms</option>
             <option value="us">us</option>
             <option value="ns">ns</option>
             <option value="M">M</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="method"> Method to send Bursts:</label>
+        <select id ="name" name="method" >
+            <option value="0">0</option>
+            <option value="1">1</option>
         </select>
     </div>
 
@@ -114,9 +147,9 @@
     </div>
 
     <div>
-        <label for="normaltimeinterval"> Time interval:</label>
-        <input type="number" id="name" min="1" value="1" step="any" name="normaltimeinterval">
-        <select id ="name" name="normaltimeintervalunit" >
+        <label for="normalTime"> Time interval:</label>
+        <input type="number" id="name" min="1" value="1" step="any" name="normalTime">
+        <select id ="name" name="normalTimeUnit" >
             <option value="S">s</option>
             <option value="ms">ms</option>
             <option value="us">us</option>
@@ -132,8 +165,8 @@
 <label for="checkUserDefinedPackets"> Frame check</label></p>
 
         <div>
-            <label for="noofframe">Number of frames:</label>
-            <input type="number" id="name" value="10" min="1" name="numberofframes">
+            <label for="noOfFrames_noTimeInfo">Number of frames:</label>
+            <input type="number" id="name" value="10" min="1" name="noOfFrames_noTimeInfo">
         </div>
 
 
