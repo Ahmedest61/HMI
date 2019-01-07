@@ -11,7 +11,7 @@ import struct
 port = "eth0"
 netjury_user = "root"
 netjury_ip = "155.245.23.55"
-netjury_load_dir = "/home/root/Netherland_Jan/Load_Generator/"
+netjury_load_dir = "/home/root/Load_Generator/"
 
 
 def get_ip_address(ifname):
@@ -258,7 +258,7 @@ def handle_data():
     flash("User defined parameters send")
     
     print ("about to send the file")
-    output = subprocess.check_output(u'scp ' + json_file + user +'@'+netjury_ip+':'+ netjury_load_dir, shell=True)
+    output = subprocess.check_output(u'scp ' + json_file + " "+netjury_user +'@'+netjury_ip+':'+ netjury_load_dir, shell=True)
     os.remove(json_file)
   #  return("Json data send successfully to FPGA server")
 	
